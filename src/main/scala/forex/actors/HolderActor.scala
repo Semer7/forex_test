@@ -20,7 +20,11 @@ class HolderActor extends Actor with ActorLogging {
   override def preStart(): Unit = {
     super.preStart()
 
-    Http().bindAndHandle(RouteLogic.route(httpRouterRef, log), "127.0.0.1", 8585)
+    val httpConfig = system.settings.config.getConfig("http")
+    val host = httpConfig.getString("host")
+    val port = httpConfig.getInt("port")
+
+    Http().bindAndHandle(RouteLogic.route(httpRouterRef, log), host, port)
   }
 
   override def receive: Receive = Actor.emptyBehavior

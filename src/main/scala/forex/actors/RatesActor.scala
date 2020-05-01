@@ -75,8 +75,6 @@ class RatesActor extends Actor with ActorLogging {
 
         sender() ! RatesUpdate(rates.get, lastUpdated)
       }
-
-
     case x =>
       log.error(s"Unknown message received $x")
 
@@ -87,9 +85,13 @@ class RatesActor extends Actor with ActorLogging {
     log.info("Rates actor stopped")
   }
 
-  private def getAuthHeader: Option[HttpHeader] = HttpHeader.parse("token", "10dc303535874aeccc86a8251e6992f5") match {
-    case ParsingResult.Ok(header, errors) => Some(header)
-    case ParsingResult.Error(error) => None
+  private def getAuthHeader: Option[HttpHeader] = {
+    val tokenValue = system.settings.config.getString("security.one-frame-token")
+
+    HttpHeader.parse("token", tokenValue) match {
+      case ParsingResult.Ok(header, errors) => Some(header)
+      case ParsingResult.Error(error) => None
+    }
   }
 
   private def parseUpdate(byteString: ByteString) = {

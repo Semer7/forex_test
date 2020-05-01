@@ -28,7 +28,8 @@ Requirements Scala 2.13, sbt 1.3.10
 To run application use `sbt run` in root folder
 To package as JAR use `sbt package` and .jar will appear in /target/scala-2.13
 
-App configuration - in progress
+App configuration:
+Resides in resource folder. To be updated.
 
 TODO:
  - graceful shutdown
@@ -36,3 +37,7 @@ TODO:
  - rewrite data folding from one-frame
  - decouple
  - add juice
+ - add configurable path to config file
+ - read config properties from environmental variables
+ - wrap artifact in docker image
+ - configure custom logging instead of akka default one

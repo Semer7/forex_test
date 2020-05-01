@@ -29,3 +29,10 @@ To run application use `sbt run` in root folder
 To package as JAR use `sbt package` and .jar will appear in /target/scala-2.13
 
 App configuration - in progress
+
+TODO:
+ - graceful shutdown
+ - multiple currencies per request support
+ - rewrite data folding from one-frame
+ - decouple
+ - add juice

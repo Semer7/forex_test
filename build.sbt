@@ -13,5 +13,13 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
   "com.typesafe.play" %% "play-json" % playJsonVersion
-
 )
+
+// source
+Compile / scalaSource := baseDirectory.value / "src" / "main" / "scala"
+Test / scalaSource := baseDirectory.value / "src" / "test" / "scala"
+
+
+// resources
+Compile / resourceDirectory := baseDirectory.value / "src" / "main" / "resources"
+Test / resourceDirectory := baseDirectory.value / "src" / "test" / "resources"

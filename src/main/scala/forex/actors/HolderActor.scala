@@ -1,8 +1,9 @@
-package forex
+package forex.actors
 
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 import akka.http.scaladsl.Http
-import akka.routing.{ActorRefRoutee, RoundRobinPool, RoundRobinRoutingLogic, Router}
+import akka.routing.RoundRobinPool
+import forex.RouteLogic
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.util.Try

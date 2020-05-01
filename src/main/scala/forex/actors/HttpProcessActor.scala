@@ -1,11 +1,11 @@
-package forex
+package forex.actors
 
 import java.util.concurrent.TimeUnit
 
-import akka.actor.{Actor, ActorLogging, ActorRef, Props}
+import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.http.scaladsl.model.{HttpEntity, HttpResponse, MediaTypes, StatusCodes}
 import forex.model.Currency.Currency
-import forex.model.{Currency, Rates}
+import forex.model.Rates
 import play.api.libs.json.Json
 
 import scala.concurrent.ExecutionContextExecutor

@@ -1,4 +1,4 @@
-package forex
+package forex.actors
 
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.TimeUnit
@@ -9,7 +9,7 @@ import akka.http.scaladsl.model.HttpHeader.ParsingResult
 import akka.http.scaladsl.model.Uri.Query
 import akka.http.scaladsl.model.{HttpHeader, HttpRequest, Uri}
 import akka.util.ByteString
-import forex.model.{Currency, Rates}
+import forex.model.{Currency, Rates, RatesUpdatePair}
 import play.api.libs.json.{JsError, JsSuccess, Json}
 
 import scala.concurrent.ExecutionContextExecutor

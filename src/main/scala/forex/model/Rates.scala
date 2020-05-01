@@ -1,6 +1,5 @@
 package forex.model
 
-import forex.RatesUpdatePair
 import forex.model.Currency.Currency
 import play.api.libs.json.{Json, OFormat}
 

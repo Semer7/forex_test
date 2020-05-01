@@ -2,6 +2,7 @@ package forex
 
 import akka.actor.{ActorSystem, Props}
 import akka.http.scaladsl.Http
+import forex.actors.HolderActor
 
 
 

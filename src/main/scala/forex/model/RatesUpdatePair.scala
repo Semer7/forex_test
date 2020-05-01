@@ -1,4 +1,4 @@
-package forex
+package forex.model
 
 import forex.model.Currency.Currency
 import play.api.libs.json.{Json, OFormat}

@@ -13,15 +13,6 @@ class HolderActor extends Actor with ActorLogging {
   implicit val executionContext: ExecutionContextExecutor = context.dispatcher
   implicit val system: ActorSystem = context.system
   private val ratesActor: ActorRef = context.actorOf(Props[RatesActor])
-//  private val httpActors: Router = {
-//    val routees = Vector.fill(getIntForKey("httpProcessorsParallelism")){
-//      val r = context.actorOf(Props(classOf[HttpProcessActor], ratesActor))
-//      context.watch(r)
-//      ActorRefRoutee(r)
-//    }
-//
-//    Router(RoundRobinRoutingLogic(), routees = routees)
-//  }
   private val httpRouterRef: ActorRef = context.actorOf(
     RoundRobinPool(getIntForKey("httpProcessorsParallelism")).props(Props(classOf[HttpProcessActor], ratesActor))
   )

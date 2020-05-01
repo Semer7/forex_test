@@ -1,4 +1,4 @@
-name := "paidy_test"
+name := "forex_test"
 
 version := "0.1"
 

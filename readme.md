@@ -35,8 +35,7 @@ TODO:
  - graceful shutdown
  - multiple currencies per request support
  - rewrite data folding from one-frame
- - decouple
- - add juice
+ - add guice
  - add configurable path to config file
  - read config properties from environmental variables
  - wrap artifact in docker image

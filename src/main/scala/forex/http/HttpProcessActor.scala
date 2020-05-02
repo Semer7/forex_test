@@ -1,11 +1,11 @@
-package forex.actors
+package forex.http
 
 import java.util.concurrent.TimeUnit
 
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.http.scaladsl.model.{HttpEntity, HttpResponse, MediaTypes, StatusCodes}
 import forex.model.Currency.Currency
-import forex.model.Rates
+import forex.model.{GetRates, Rates}
 import play.api.libs.json.Json
 
 import scala.concurrent.ExecutionContextExecutor
@@ -35,14 +35,15 @@ class HttpProcessActor(ratesActor: ActorRef) extends Actor with ActorLogging {
     case RequestRates(from, to) =>
       log.info("Received rates request")
       val r = rates
-      log.info(s"Rates ${r}")
+      log.info(s"Rates $r")
 
       val ff = rates.flatMap(_.get(from, to))
       log.info(s"FF $ff")
 
-      val rats = rates.flatMap(_.get(from, to)).map(rate => {
+      val rats = rates.flatMap(_.get(from, to))
+        .map(rate => {
           HttpResponse(StatusCodes.OK, entity = HttpEntity(MediaTypes.`application/json`, Json.toJson(rate).toString))
-      }).getOrElse(HttpResponse(StatusCodes.NotFound, entity = "Valid rates data not found"))
+        }).getOrElse(HttpResponse(StatusCodes.NotFound, entity = "Valid rates data not found"))
 
       sender() ! rats
   }

@@ -9,7 +9,7 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
 import akka.pattern.ask
 import akka.util.Timeout
-import forex.actors.RequestRates
+import forex.http.RequestRates
 import forex.model.Currency
 
 import scala.concurrent.{ExecutionContext, Future}

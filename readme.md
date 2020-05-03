@@ -1,5 +1,7 @@
 Sample project to emulate forex data provider
 
+Throughoutput: basic local2local test with Jmeter showed 1M requests per minute.
+
 Request format:
 `http://<host>:<port>/rates?from=<currency>&to=<currency>`
 
@@ -39,4 +41,5 @@ TODO:
  - add configurable path to config file
  - read config properties from environmental variables
  - wrap artifact in docker image
- - configure custom logging instead of akka default one
+ - cover with tests
+ - commence proper load test
